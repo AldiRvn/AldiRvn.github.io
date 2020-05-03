@@ -1,1 +1,1 @@
-alert('Hello');
+alert('Hello, Welcome. This Only Mock Up.');
