@@ -1,0 +1,15 @@
+/* Mobile */
+@media only screen and (max-width: 600px) {
+    .hero-img {
+        max-width: 50%;
+    }
+    nav {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .hero-img {
+        max-width: 15%;
+    }
+}
