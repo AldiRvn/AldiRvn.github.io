@@ -13,3 +13,25 @@
         max-width: 15%;
     }
 }
+html {
+    scroll-behavior: smooth;
+}
+
+aside figure img {
+    width: 100%;
+    height: 200px;
+}
+
+.case {
+    font-size: xxx-large;
+    font-weight: bold;
+}
+.confirmed {
+    color: #f1c40f;
+}
+.recovered {
+    color: #3498db;
+}
+.deaths {
+    color: #e74c3c;
+}

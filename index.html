@@ -4,7 +4,8 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" href="https://via.placeholder.com/70x70">
+    <link rel="icon" href="favicon.svg">
+    <!-- Favicon by https://remixicon.com/ -->
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <link rel="stylesheet" href="style.css">
 
@@ -12,24 +13,24 @@
     <meta name="description" content="My description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Mockup Website</title>
+    <title>Portal Of Information</title>
 </head>
 
 <body>
     <header>
         <!-- Navbar -->
         <nav>
-            <a href="/"><img alt="Logo" src="https://via.placeholder.com/200x70?text=Logo" height="70"></a>
-            <!-- <a href="">Home</a> -->
+            <!-- <a href="/"><img alt="Logo" src="https://via.placeholder.com/200x70?text=Logo" height="70"></a> -->
+            <a href="">Home</a>
             <ul>
-                <li>Menu Item 1</li>
-                <li><a href="#">Menu Item 2</a></li>
-                <li><a href="#">Dropdown Menu Item</a>
+                <!-- <li>Menu Item 1</li> -->
+                <li><a href="#listSource">List Source</a></li>
+                <!-- <li><a href="#">Dropdown Menu Item</a>
                     <ul>
                         <li><a href="#">Sublink 1</a></li>
                         <li><a href="#">Sublink 2</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </nav>
 
@@ -43,9 +44,9 @@
         <h1>Observe the latest information </h1>
         <p>about various kinds of <mark>information</mark></p>
         <br>
-        <mark>
+        <!-- <mark>
             [Still only mockup]
-        </mark>
+        </mark> -->
         <!-- <p>
             <a href="#"><i>Italic Link Button</i></a><a href="#">
             <b>Bold Link Button &rarr;</b></a>
@@ -59,10 +60,8 @@
             <header>
                 <h2>COVID-19 Updated Case in Indonesia</h2>
                 <p>
-                    source: <a href="">link</a><br>
-                    <mark>
-                        update : 2020-05-03 07:47:23
-                    </mark>
+                    source: <a href="#listSource">below</a><br>
+                    <!-- <mark>update : 2020-05-03 07:47:23</mark> -->
                 </p>
             </header>
             <aside>
@@ -73,7 +72,7 @@
                     </figcaption>
                 </figure>
                 <h3>Confirmed</h3>
-                <p>0</p>
+                <p class="case confirmed" >0</p>
                 <!-- <p><small>*with small content</small></p> -->
             </aside>
             <aside>
@@ -85,7 +84,7 @@
                 </figure>
                 <h3>Recovered</h3>
                 <!-- <p>999999<sup>WoW</sup></p> -->
-                <p>999999<sup>WoW</sup></p>
+                <p class="case recovered" >999999<sup>WoW</sup></p>
             </aside>
             <aside>
                 <figure>
@@ -95,25 +94,36 @@
                     </figcaption>
                 </figure>
                 <h3>Deaths</h3>
-                <p>-0</p>
+                <p class="case deaths" >-0</p>
             </aside>
         </section>
+
+        <!-- Random Quote -->
         <hr>
         <section>
             <header>
                 <h3>Random Quote</h3>
+                source: <a href="#listSource">below</a><br>
             </header>
-            <blockquote>
-                <span id="quote">"Before software can be reusable it first has to be usable."</span>
-                <footer><i id="author">- Ralph Johnson</i></footer>
-            </blockquote>
+            <main>
+                <blockquote>
+                    <span id="quote">"Before software can be reusable it first has to be usable."</span>
+                    <footer><i id="author">- Ralph Johnson</i></footer>
+                </blockquote>
+            </main>
+        </section>
+        <section>
+            <p>
+                <!-- <a href='#!' onclick="rollQuote()"><i>Roll</i></a> -->
+                <a href='#!' onclick="rollQuote()"><b>Roll</b></a>
+            </p>
         </section>
 
-        <!-- List of Informations -->
+        <!-- List of Source -->
         <hr>
         <section>
             <header>
-                <h3>List of Informations</h3>
+                <h3 id="listSource">List of Source</h3>
             </header>
             <table>
                 <thead>
@@ -121,20 +131,20 @@
                         <th></th>
                         <th>Content</th>
                         <th>Source</th>
-                        <th>Latest update</th>
+                        <!-- <th>Latest update</th> -->
                     </tr>
                 </thead>
                 <tr>
                     <td>1</td>
                     <td>COVID-19 Case in Indonesia</td>
-                    <td><a href="https://data.kemkes.go.id/covid19/api.html">data.kemkes.go.id/covid19/api</a></td>
-                    <td>2020-05-03 07:25:56</td>
+                    <td><a href="https://kawalcorona.com/api/">kawalcorona.com/api</a></td>
+                    <!-- <td>2020-05-03 07:25:56</td> -->
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Random Quotes</td>
                     <td><a href="http://api.quotable.io/">api.quotable.io</a></td>
-                    <td>2020-05-03 07:30:36</td>
+                    <!-- <td>2020-05-03 07:30:36</td> -->
                 </tr>
             </table>
         </section>
