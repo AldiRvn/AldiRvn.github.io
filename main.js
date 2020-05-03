@@ -7,7 +7,7 @@ var request = new XMLHttpRequest(),
 request.open('GET', url, true)
 request.onload = function() {
     var data = JSON.parse(this.response)
-    document.getElementById('quote').innerHTML = data.content
+    document.getElementById('quote').innerHTML = '"'+data.content+'"'
     document.getElementById('author').innerHTML = '- '+data.author
 }
 
