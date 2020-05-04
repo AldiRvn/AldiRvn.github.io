@@ -56,13 +56,13 @@
     <main>
 
         <!-- COVID-19 Updated Case in Indonesia -->
-        <hr>
+        <hr id="covid_19_case">
         <section>
             <header>
                 <h2>COVID-19 Updated Case in Indonesia</h2>
                 <p>
                     source: <a href="#listSource">below</a><br>
-                    <mark>updated : <span id="covid19_case_updated"></span></mark>
+                    <mark>updated : <span id="covid19_case_updated">Loading</span></mark>
                 </p>
             </header>
             <aside>
@@ -73,7 +73,7 @@
                     </figcaption>
                 </figure>
                 <h3>Confirmed</h3>
-                <p class="case confirmed" >0</p>
+                <p class="case confirmed" >Loading</p>
                 <!-- <p><small>*with small content</small></p> -->
             </aside>
             <aside>
@@ -85,7 +85,7 @@
                 </figure>
                 <h3>Recovered</h3>
                 <!-- <p>999999<sup>WoW</sup></p> -->
-                <p class="case recovered" >999999<sup>WoW</sup></p>
+                <p class="case recovered" >Loading<sup>...</sup></p>
             </aside>
             <aside>
                 <figure>
@@ -95,15 +95,15 @@
                     </figcaption>
                 </figure>
                 <h3>Deaths</h3>
-                <p class="case deaths" >-0</p>
+                <p class="case deaths" >Loading</p>
             </aside>
         </section>
 
         <!-- Random Quote -->
-        <hr>
+        <hr id="random_quote">
         <section>
             <header>
-                <h3>Random Quote</h3>
+                <h2>Random Quote</h2>
                 source: <a href="#listSource">below</a><br>
             </header>
             <main>
@@ -124,7 +124,7 @@
         <hr>
         <section>
             <header>
-                <h3 id="listSource">List of Source</h3>
+                <h2 id="listSource">List of Source</h2>
             </header>
             <table>
                 <thead>
@@ -132,7 +132,7 @@
                         <th></th>
                         <th>Content</th>
                         <th>Source</th>
-                        <!-- <th>Latest update</th> -->
+                        <th>Show</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -140,13 +140,13 @@
                         <td>1</td>
                         <td>COVID-19 Case in Indonesia</td>
                         <td><a href="https://www.trackcorona.live/api">trackcorona.live/api</a></td>
-                        <!-- <td>2020-05-03 07:25:56</td> -->
+                        <td><a href="#covid_19_case">up</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Random Quotes</td>
                         <td><a href="http://api.quotable.io/">api.quotable.io</a></td>
-                        <!-- <td>2020-05-03 07:30:36</td> -->
+                        <td><a href="#random_quote">up</a></td>
                     </tr>
                 </tbody>
             </table>
