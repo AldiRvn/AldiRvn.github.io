@@ -24,7 +24,7 @@ aside figure img {
     height: 200px;
 }
 
-.case {
+.tLarge {
     font-size: xxx-large;
     font-weight: bold;
 }
@@ -36,4 +36,7 @@ aside figure img {
 }
 .deaths {
     color: #e74c3c;
+}
+.exchangeRate {
+    color: #F9A826;
 }
