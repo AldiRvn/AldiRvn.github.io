@@ -29,11 +29,14 @@ function rollQuote() {
 
 // COVID-19 Case
 function covidCase() {
-    var url = 'https://api.kawalcorona.com/indonesia/'
+    var url = 'https://www.trackcorona.live/api/countries/id'
     ajax(url, function(data) {
-        data = JSON.parse(data)
-        document.querySelector('.case.confirmed').innerHTML = data[0].positif
-        document.querySelector('.case.recovered').innerHTML = data[0].sembuh
-        document.querySelector('.case.deaths').innerHTML = data[0].meninggal
+        result = JSON.parse(data),
+        updated = new Date(Date.parse(result.data[0].updated))
+        
+        document.getElementById('covid19_case_updated').innerHTML = updated
+        document.querySelector('.case.confirmed').innerHTML = result.data[0].confirmed
+        document.querySelector('.case.recovered').innerHTML = result.data[0].recovered
+        document.querySelector('.case.deaths').innerHTML = result.data[0].dead
     })
 }
