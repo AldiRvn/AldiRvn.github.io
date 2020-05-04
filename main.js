@@ -1,7 +1,17 @@
 // alert('Hello, Welcome. This web is on development.')
-covidCase()
-exchangeRate()
+show(html_covid19_case, covidCase, false)
+//covidCase()
+//exchangeRate()
 rollQuote()
+
+// Change the main content from html.js
+function show(elems, after, tele) {
+    document.getElementById('main').innerHTML = elems
+    if(tele){
+        document.getElementById('main').scrollIntoView()
+    }
+    after()
+}
 
 function ajax(url, after) {
     var request = new XMLHttpRequest()
@@ -43,14 +53,16 @@ function covidCase() {
 }
 
 function exchangeRate() {
-    document.getElementById('exchange_rate_updated').innerHTML = 'Coming soon'
-    document.querySelector('.tLarge.exchangeRate').innerHTML = 'Coming soon'
-    // var url = 'https://www.freeforexapi.com/api/live?pairs=USDIDR'
-    // ajax(url, function(data) {
-    //     data = JSON.parse(data)
-    //     document.getElementById('exchange_rate_updated').innerHTML = data.rates.USDIDR.rate
-    //     document.querySelector('.tLarge.exchangeRate').innerHTML = data.rates.USDIDR.timestamp
-    // })
+    document.getElementById('exchange_rate_updated').innerHTML = 'Loading'
+    document.querySelector('.tLarge.exchangeRate').innerHTML = 'Loading'
+
+    var url = 'https://api.exchangeratesapi.io/latest?base=USD'
+    ajax(url, function(data) {
+        data = JSON.parse(data)
+        document.getElementById('exchange_rate_updated').innerHTML = data.date
+        document.querySelector('.tLarge.exchangeRate').innerHTML = data.rates.IDR
+    })
+
 }
 
 // Content Scroll

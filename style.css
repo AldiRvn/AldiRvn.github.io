@@ -19,6 +19,9 @@ html {
 .hidden {
     opacity: 0;
 }
+.fiction {
+    display: none;
+}
 aside figure img {
     width: 100%;
     height: 200px;
