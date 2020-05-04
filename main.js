@@ -40,3 +40,25 @@ function covidCase() {
         document.querySelector('.case.deaths').innerHTML = result.data[0].dead
     })
 }
+
+// Content Scroll
+window.onscroll = function() {
+    console.log(document.body.scrollTop || document.documentElement.scrollTop)
+    
+    var px = 350, min = 500;
+    if(document.body.scrollTop > px || document.documentElement.scrollTop > px){
+        document.querySelectorAll('section aside').forEach(element => {
+            element.classList.add('animated', 'fadeInUp')
+        });
+    }
+
+    px = document.querySelector('section main blockquote')
+    .offsetTop - document.body.scrollTop || document.documentElement.scrollTop
+    console.log('>'+px);
+    
+    if(document.body.scrollTop > px - min || document.documentElement.scrollTop > px - min){
+        document.querySelector('section main blockquote').classList.add('animated', 'fadeIn')
+    }
+}
+document.querySelector('body > header:nth-child(1) > main')
+.classList.add('animated', 'fadeIn')
