@@ -46,28 +46,56 @@ function covidCase() {
             updated = new Date(Date.parse(result.data[0].updated))
 
         document.getElementById('covid19_case_updated').innerHTML = updated
-        document.querySelector('.tLarge.confirmed').innerHTML = result.data[0].confirmed
-        document.querySelector('.tLarge.recovered').innerHTML = result.data[0].recovered
-        document.querySelector('.tLarge.deaths').innerHTML = result.data[0].dead
+        document.querySelector('.t-xxxLarge.confirmed').innerHTML = result.data[0].confirmed
+        document.querySelector('.t-xxxLarge.recovered').innerHTML = result.data[0].recovered
+        document.querySelector('.t-xxxLarge.deaths').innerHTML = result.data[0].dead
     })
 }
 
 // Exchange Rate
 function exchangeRate() {
     document.getElementById('exchange_rate_updated').innerHTML = 'Loading'
-    document.querySelector('.tLarge.exchangeRate').innerHTML = 'Loading'
+    document.querySelector('.t-xxxLarge.exchangeRate').innerHTML = 'Loading'
 
     var url = 'https://api.exchangeratesapi.io/latest?base=USD'
     ajax(url, function (data) {
         data = JSON.parse(data)
 
         document.getElementById('exchange_rate_updated').innerHTML = data.date
-        document.querySelector('.tLarge.exchangeRate').innerHTML = data.rates.IDR
+        document.querySelector('.t-xxxLarge.exchangeRate').innerHTML = data.rates.IDR
     })
 
 }
 
 // Today Salah Times
+function salahTimes() {
+    var url = 'https://api.pray.zone/v2/times/today.json?ip=',
+        xhr = createCORSRequest('GET', url)
+    if (!xhr) {
+        throw new Error('CORS not supported')
+    } else {
+        var ip = 'https://api.ipify.org/?format=json'
+        ajax(ip, function (data) {
+            data = JSON.parse(data)
+    
+            url += data.ip
+            console.log(url);
+    
+            ajax(url, function (data) {
+                data = JSON.parse(data),
+                    update = data.results.datetime[0].date.gregorian
+                timezone = data.results.location.timezone
+                times = data.results.datetime[0].times
+    
+                console.log(times);
+                document.getElementById('salah_times_updated').innerHTML = update
+                document.getElementById('timezone_salah_times').innerHTML = timezone
+                document.querySelector('.t-xLarge.salahTimes').innerHTML = table_salahTimes(times)
+            })
+        })
+    }
+}
+
 function createCORSRequest(method, url) {
     var xhr = new XMLHttpRequest()
     if ("withCredentials" in xhr) {
@@ -93,34 +121,8 @@ if (devMode == 1) {
     document.querySelectorAll('.onDev').forEach(d => {
         d.classList.remove('onDev')
     })
-    
-    var url = 'https://api.pray.zone/v2/times/today.json?ip='
-    var xhr = createCORSRequest('GET', url)
-    if (!xhr) {
-        throw new Error('CORS not supported')
-    } else {
-        var ip = 'https://api.ipify.org/?format=json'
-        ajax(ip, function (data) {
-            data = JSON.parse(data)
 
-            url += data.ip
-            console.log(url);
-            
-            ajax(url, function (data) {
-                data = JSON.parse(data),
-                timestamp = data.results.datetime[0].date.timestamp
-                timezone = data.results.location.timezone
-                times = data.results.datetime[0].times
-                console.log(data.results.datetime[0], timestamp, times);
-                
-                
-                document.getElementById('salah_times_updated').innerHTML = new Date(timestamp)
-                document.getElementById('timezone_salah_times').innerHTML = timezone
-                document.querySelectorAll('.tLarge.salahTimes').innerHTML = html_salahTimes
-            })
-        })
 
-    }
 }
 
 
@@ -131,7 +133,7 @@ window.onscroll = function () {
     var px = 350, min = 500;
     if (document.body.scrollTop > px || document.documentElement.scrollTop > px) {
         document.querySelectorAll('section aside').forEach(element => {
-            element.classList.add('animated', 'fadeInUp')
+            element.classList.add('animated', 'fadeIn')
         });
     }
 

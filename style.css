@@ -30,7 +30,15 @@ aside figure img {
     height: 200px;
 }
 
-.tLarge {
+.t-xLarge {
+    font-size: x-large;
+    font-weight: bold;
+}
+.t-xxLarge {
+    font-size: xx-large;
+    font-weight: bold;
+}
+.t-xxxLarge {
     font-size: xxx-large;
     font-weight: bold;
 }
@@ -48,4 +56,6 @@ aside figure img {
 }
 .salahTimes {
     color: #7E58C7;
+    display: flex;
+    justify-content: center;
 }
