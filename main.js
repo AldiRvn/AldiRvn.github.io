@@ -111,6 +111,8 @@ if (devMode == 1) {
                 timestamp = data.results.datetime[0].date.timestamp
                 timezone = data.results.location.timezone
                 times = data.results.datetime[0].times
+                console.log(data.results.datetime[0], timestamp, times);
+                
                 
                 document.getElementById('salah_times_updated').innerHTML = new Date(Date.parse(timestamp))
                 document.getElementById('timezone_salah_times').innerHTML = timezone
