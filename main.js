@@ -114,9 +114,9 @@ if (devMode == 1) {
                 console.log(data.results.datetime[0], timestamp, times);
                 
                 
-                document.getElementById('salah_times_updated').innerHTML = new Date(Date.parse(timestamp))
+                document.getElementById('salah_times_updated').innerHTML = new Date(timestamp)
                 document.getElementById('timezone_salah_times').innerHTML = timezone
-                document.querySelectorAll('.tLarge.salahTimes').innerHTML = times
+                document.querySelectorAll('.tLarge.salahTimes').innerHTML = html_salahTimes
             })
         })
 

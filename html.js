@@ -58,4 +58,36 @@ var html_covid19_case = '\
             <h3>1 USD = IDR :</h3>\
             <p class="tLarge exchangeRate" >Loading</p>\
             <!-- <p><small>*with small content</small></p> -->\
-    </aside>'
+    </aside>',
+    
+    html_salahTimes = `
+    <table>
+        <thead>
+            <tr>
+                <th>Salah Name</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Fajr</td>
+                <td>${times.Fajr}</td>
+            </tr>
+            <tr>
+                <td>Dhuhr</td>
+                <td>${times.Dhuhr}</td>
+            </tr>
+            <tr>
+                <td>Asr</td>
+                <td>${times.Asr}</td>
+            </tr>
+            <tr>
+                <td>Maghrib</td>
+                <td>${times.Maghrib}</td>
+            </tr>
+            <tr>
+                <td>Isha</td>
+                <td>${times.Isha}</td>
+            </tr>
+        </tbody>
+    </table>`
