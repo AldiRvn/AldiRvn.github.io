@@ -22,6 +22,9 @@ html {
 .fiction {
     display: none;
 }
+.onDev {
+    display: none;
+}
 aside figure img {
     width: 100%;
     height: 200px;
@@ -42,4 +45,7 @@ aside figure img {
 }
 .exchangeRate {
     color: #F9A826;
+}
+.salahTimes {
+    color: #7E58C7;
 }

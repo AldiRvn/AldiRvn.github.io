@@ -52,6 +52,7 @@ function covidCase() {
     })
 }
 
+// Exchange Rate
 function exchangeRate() {
     document.getElementById('exchange_rate_updated').innerHTML = 'Loading'
     document.querySelector('.tLarge.exchangeRate').innerHTML = 'Loading'
@@ -59,11 +60,51 @@ function exchangeRate() {
     var url = 'https://api.exchangeratesapi.io/latest?base=USD'
     ajax(url, function(data) {
         data = JSON.parse(data)
+
         document.getElementById('exchange_rate_updated').innerHTML = data.date
         document.querySelector('.tLarge.exchangeRate').innerHTML = data.rates.IDR
     })
 
 }
+
+// Today Salah Times
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest()
+    if("withCredentials" in xhr){
+        // Check if the XMLHttpRequest object has a "withCredentials" property.
+        // "withCredentials" only exists on XMLHttpRequest2 objects.
+
+        ajax(method, url, true)
+    } else if(typeof XDomainRequest != "undefined"){
+        // Otherwise, check if XDomainRequest.
+        // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+        
+        ajax(method, url)
+    }else{
+        // Otherwise, CORS is not supported by the browser.
+
+        alert('Your browser is not compatible, update your browser or try in another browser.')
+    }
+    return xhr
+}
+// data = JSON.parse(data)
+
+// document.getElementById('timezone_salah_times').innerHTML = '.'
+// document.querySelectorAll('.tLarge.salahTimes').innerHTML = '.'
+
+var devMode = location.search.split('dm=')[1]
+if( devMode == 1){
+    document.querySelectorAll('.onDev').forEach(d => {
+        d.classList.remove('onDev')
+    })
+    
+    var url = 'https://waktusholat.org/api/docs/today'
+    var xhr = createCORSRequest('GET', url)
+    if(!xhr){
+        throw new Error('CORS not supported')
+    }
+}
+
 
 // Content Scroll
 window.onscroll = function () {
