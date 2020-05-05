@@ -74,12 +74,12 @@ function createCORSRequest(method, url) {
         // Check if the XMLHttpRequest object has a "withCredentials" property.
         // "withCredentials" only exists on XMLHttpRequest2 objects.
 
-        ajax(method, url, true)
+        xhr.open(method, url, true)
     } else if(typeof XDomainRequest != "undefined"){
         // Otherwise, check if XDomainRequest.
         // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
         
-        ajax(method, url)
+        xhr.open(method, url)
     }else{
         // Otherwise, CORS is not supported by the browser.
 
@@ -97,7 +97,7 @@ if( devMode == 1){
     document.querySelectorAll('.onDev').forEach(d => {
         d.classList.remove('onDev')
     })
-    
+
     var url = 'https://waktusholat.org/api/docs/today'
     var xhr = createCORSRequest('GET', url)
     if(!xhr){
