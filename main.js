@@ -79,7 +79,6 @@ function salahTimes() {
             data = JSON.parse(data)
     
             url += data.ip
-            console.log(url);
     
             ajax(url, function (data) {
                 data = JSON.parse(data),
@@ -87,7 +86,6 @@ function salahTimes() {
                 timezone = data.results.location.timezone
                 times = data.results.datetime[0].times
     
-                console.log(times);
                 document.getElementById('salah_times_updated').innerHTML = update
                 document.getElementById('timezone_salah_times').innerHTML = timezone
                 document.querySelector('.t-xLarge.salahTimes').innerHTML = table_salahTimes(times)
@@ -133,7 +131,7 @@ window.onscroll = function () {
     var px = 350, min = 500;
     if (document.body.scrollTop > px || document.documentElement.scrollTop > px) {
         document.querySelectorAll('section aside').forEach(element => {
-            element.classList.add('animated', 'fadeIn')
+            element.classList.add('animated', 'jackInTheBox')
         });
     }
 
