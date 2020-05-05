@@ -7,7 +7,7 @@ rollQuote()
 // Change the main content from html.js
 function show(elems, after, tele) {
     document.getElementById('main').innerHTML = elems
-    if(tele){
+    if (tele) {
         document.getElementById('main').scrollIntoView()
     }
     after()
@@ -58,7 +58,7 @@ function exchangeRate() {
     document.querySelector('.tLarge.exchangeRate').innerHTML = 'Loading'
 
     var url = 'https://api.exchangeratesapi.io/latest?base=USD'
-    ajax(url, function(data) {
+    ajax(url, function (data) {
         data = JSON.parse(data)
 
         document.getElementById('exchange_rate_updated').innerHTML = data.date
@@ -70,38 +70,54 @@ function exchangeRate() {
 // Today Salah Times
 function createCORSRequest(method, url) {
     var xhr = new XMLHttpRequest()
-    if("withCredentials" in xhr){
+    if ("withCredentials" in xhr) {
         // Check if the XMLHttpRequest object has a "withCredentials" property.
         // "withCredentials" only exists on XMLHttpRequest2 objects.
 
         xhr.open(method, url, true)
-    } else if(typeof XDomainRequest != "undefined"){
+    } else if (typeof XDomainRequest != "undefined") {
         // Otherwise, check if XDomainRequest.
         // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-        
+
         xhr.open(method, url)
-    }else{
+    } else {
         // Otherwise, CORS is not supported by the browser.
 
         alert('Your browser is not compatible, update your browser or try in another browser.')
     }
     return xhr
 }
-// data = JSON.parse(data)
-
-// document.getElementById('timezone_salah_times').innerHTML = '.'
-// document.querySelectorAll('.tLarge.salahTimes').innerHTML = '.'
 
 var devMode = location.search.split('dm=')[1]
-if( devMode == 1){
+if (devMode == 1) {
     document.querySelectorAll('.onDev').forEach(d => {
         d.classList.remove('onDev')
     })
-
-    var url = 'https://waktusholat.org/api/docs/today'
+    
+    var url = 'https://api.pray.zone/v2/times/today.json?ip='
     var xhr = createCORSRequest('GET', url)
-    if(!xhr){
+    if (!xhr) {
         throw new Error('CORS not supported')
+    } else {
+        var ip = 'https://api.ipify.org/?format=json'
+        ajax(ip, function (data) {
+            data = JSON.parse(data)
+
+            url += data.ip
+            console.log(url);
+            
+            ajax(url, function (data) {
+                data = JSON.parse(data),
+                timestamp = data.results.datetime[0].date.timestamp
+                timezone = data.results.location.timezone
+                times = data.results.datetime[0].times
+                
+                document.getElementById('salah_times_updated').innerHTML = new Date(Date.parse(timestamp))
+                document.getElementById('timezone_salah_times').innerHTML = timezone
+                document.querySelectorAll('.tLarge.salahTimes').innerHTML = times
+            })
+        })
+
     }
 }
 
