@@ -59,10 +59,11 @@ function exchangeRate() {
 
     var url = 'https://api.exchangeratesapi.io/latest?base=USD'
     ajax(url, function (data) {
-        data = JSON.parse(data)
+        data = JSON.parse(data),
+        result = new Intl.NumberFormat('id').format(data.rates.IDR)
 
         document.getElementById('exchange_rate_updated').innerHTML = data.date
-        document.querySelector('.t-xxxLarge.exchangeRate').innerHTML = data.rates.IDR
+        document.querySelector('.t-xxxLarge.exchangeRate').innerHTML = result
     })
 
 }
@@ -114,13 +115,12 @@ function createCORSRequest(method, url) {
     return xhr
 }
 
+// ?dm=
 var devMode = location.search.split('dm=')[1]
 if (devMode == 1) {
     document.querySelectorAll('.onDev').forEach(d => {
         d.classList.remove('onDev')
     })
-
-
 }
 
 
